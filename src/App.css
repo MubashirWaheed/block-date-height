@@ -5,4 +5,5 @@ body,
 .App {
   height: 100vh;
   text-align: center;
+  overflow: hidden;
 }

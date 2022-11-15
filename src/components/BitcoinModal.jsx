@@ -1,8 +1,9 @@
 import React from "react";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
+import { IconButton, Tooltip, Typography } from "@mui/material";
 import simpleBtcQR from "../images/simpleBtcQR.png";
+import CopyIcon from "../images/copy.svg";
 
 const style = {
   position: "absolute",
@@ -13,9 +14,10 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: { xs: 270, sm: 400 },
-  bgcolor: "white",
+  bgcolor: "#ff9416",
   boxShadow: 24,
   p: 4,
+  borderRadius: 2,
 };
 
 const BitcoinModal = ({ openBitcoinModal, handleBitcoinModal }) => {
@@ -23,10 +25,24 @@ const BitcoinModal = ({ openBitcoinModal, handleBitcoinModal }) => {
     <div>
       <Modal open={openBitcoinModal} onClose={handleBitcoinModal}>
         <Box sx={style}>
-          <Typography>Bitcoin</Typography>
-          <Typography sx={{ wordWrap: "break-word" }}>
+          <Typography color="white" fontWeight={600} fontSize={24}>
+            Bitcoin
+          </Typography>
+          <Typography color="white" sx={{ wordWrap: "break-word" }}>
             3BHyEzjmrbkvSVpMKSYnLuCQVc8uiGJn3M
           </Typography>
+          <Tooltip title="copy bitcoin address">
+            <IconButton
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  "3BHyEzjmrbkvSVpMKSYnLuCQVc8uiGJn3M"
+                )
+              }
+            >
+              <img src={CopyIcon} alt="copy bitcoin address" />
+            </IconButton>
+          </Tooltip>
+
           <Box
             component="img"
             src={simpleBtcQR}

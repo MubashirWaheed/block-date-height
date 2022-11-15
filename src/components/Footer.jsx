@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import BitcoinModal from "./BitcoinModal";
 import LightningModal from "./LightningModal";
 import lightningLogo from "../images/lightningLogo.png";
 import bitcoinImage from "../images/bitcoin.png";
+import CupIcon from "../images/CupIcon.svg";
 
 const Footer = () => {
   const [openBitcoinModal, setOpenBitcoinModal] = useState(false);
@@ -23,6 +24,9 @@ const Footer = () => {
         my={2}
         pr={1}
       >
+        <IconButton>
+          <img src={CupIcon} alt="Cup Icon" />
+        </IconButton>
         <Typography variant="body1" color="#4F4F4F">
           Buy us a coffee? Click and Scan here
         </Typography>
@@ -41,7 +45,6 @@ const Footer = () => {
           openBitcoinModal={openBitcoinModal}
           handleBitcoinModal={handleBitcoinModal}
         />
-
         <Box
           onClick={handleLightningModal}
           component="img"

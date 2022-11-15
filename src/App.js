@@ -95,15 +95,17 @@ function App() {
             fontSize={{ sm: 60, xs: 30 }}
             fontStyle="italic"
             lineHeight={1}
-            // fontWeight={400}
-            // sx={{ typography: { sm: "h4", xs: "h6" } }}
             gutterBottom
           >
             {message}
           </Typography>
         </Paper>
         {display && (
-          <Typography>
+          <Typography
+            color="white"
+            sx={{ fontSize: { sm: 24, xs: 16 } }}
+            mt={2}
+          >
             Enter a date + time to know the Bitcoin blockheight at that moment
           </Typography>
         )}
@@ -132,11 +134,19 @@ function App() {
                 )}
               />
             </LocalizationProvider>
-            <Button variant="contained" onClick={getNewData}>
-              Enter
+            <Button
+              variant="contained"
+              sx={{ fontStyle: "italic" }}
+              onClick={getNewData}
+            >
+              Check it out now
             </Button>
           </Box>
-          {!display && <Typography mt={2}>was</Typography>}
+          {!display && (
+            <Typography color="white" mt={2} fontSize={25}>
+              was
+            </Typography>
+          )}
         </Container>
 
         {blockData && size.width > 800 && (
