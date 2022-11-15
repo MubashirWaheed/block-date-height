@@ -1,8 +1,8 @@
 import React from "react";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
-import simpleBtcQR from "../images/simpleBtcQR.png";
 import { Typography } from "@mui/material";
+import simpleBtcQR from "../images/simpleBtcQR.png";
 
 const style = {
   position: "absolute",
