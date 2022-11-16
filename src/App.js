@@ -5,7 +5,14 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import DataTable from "./components/DataTable";
-import { AppBar, Button, IconButton, Paper, Toolbar } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  IconButton,
+  Link,
+  Paper,
+  Toolbar,
+} from "@mui/material";
 import { Box, Container } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import bitcoinImage from "./images/bitcoin.png";
@@ -13,7 +20,7 @@ import Footer from "./components/Footer";
 import useWindowSize from "./hooks/useWindowSize";
 import MobileTable from "./components/MobileTable";
 import Background from "./images/background.png";
-import HomeIcon from "./images/Home.svg";
+import TwitterSvg from "./images/twitter.svg";
 
 const disablePast = "Tue 3 Jan 2009 19:26:00 GMT";
 
@@ -63,24 +70,16 @@ function App() {
 
   return (
     <div className="App">
-      <Box sx={{ flexGrow: 1 }} bgcolor="#ff9416">
-        <AppBar position="static" sx={{ bgcolor: "#ff9416" }}>
-          <Toolbar>
-            <IconButton
-              size="small"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <img src={HomeIcon} alt="Home icon" />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </Box>
+      <Box sx={{ flexGrow: 1 }} bgcolor="#ff9416" height="50px"></Box>
 
-      <Box bgcolor="#ff9416" height="100%">
+      <Box
+        bgcolor="#ff9416"
+        minHeight="100%"
+        display="flex"
+        flexDirection="column"
+      >
         <Paper
+          flexGrow={1}
           style={styles.paperContainer}
           sx={{ height: { xs: 170, sm: 280 } }}
         >
@@ -159,6 +158,21 @@ function App() {
             setDisplay={setDisplay}
           />
         )}
+        <Link
+          mt="auto"
+          mr={2}
+          alignSelf="flex-end"
+          href="https://twitter.com/metranite"
+          sx={{ color: "black", cursor: "pointer" }}
+          underline="none"
+          target="_blank"
+          rel="noopener"
+        >
+          <IconButton sx={{ p: "0" }}>
+            <img src={TwitterSvg} alt="twitter icon" />
+          </IconButton>
+          @metranite
+        </Link>
       </Box>
       <Footer />
     </div>
