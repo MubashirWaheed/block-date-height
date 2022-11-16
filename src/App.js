@@ -5,14 +5,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import DataTable from "./components/DataTable";
-import {
-  AppBar,
-  Button,
-  IconButton,
-  Link,
-  Paper,
-  Toolbar,
-} from "@mui/material";
+import { Button, IconButton, Link, Paper } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import bitcoinImage from "./images/bitcoin.png";
@@ -78,15 +71,11 @@ function App() {
       ></Box>
 
       <Box
-        // mt={20}
-        // pt={15}
         bgcolor="#ff9416"
-        // minHeight="0"
         minHeight="92%"
         display="flex"
         flexDirection="column"
       >
-        {/* <Box flexGrow={1}> */}
         <Paper
           // sx={{ flexGrow: 1 }}
           style={styles.paperContainer}
@@ -153,11 +142,9 @@ function App() {
               GO
             </Button>
           </Box>
-          {/* {display && ( */}
-          <Typography color="white" mt={2} sx={{ mr: { xs: 0, sm: 9 } }}>
+          <Typography color="white" mt={2}>
             Enter time in your local timezone
           </Typography>
-          {/* )} */}
           {!display && (
             <Typography color="white" mt={2} fontSize={25}>
               was
@@ -190,7 +177,6 @@ function App() {
           </IconButton>
           @metranite
         </Link>
-        {/* </Box> */}
         <Box bgcolor="white">
           <Footer />
         </Box>
