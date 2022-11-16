@@ -15,7 +15,7 @@ import MobileTable from "./components/MobileTable";
 import Background from "./images/background.png";
 import HomeIcon from "./images/Home.svg";
 
-const disablePast = "Wed 4 Jan 2009 05:00:00 GMT";
+const disablePast = "Tue 3 Jan 2009 19:26:00 GMT";
 
 const styles = {
   paperContainer: {
@@ -36,7 +36,6 @@ function App() {
 
   const [value, setValue] = useState(onLoadDateTime);
 
-  const size = useWindowSize();
   const [message, setMessage] = useState("Welcome to BlockHeightDate");
   const [display, setDisplay] = useState(true);
 
@@ -51,7 +50,10 @@ function App() {
       headers: { accept: "Accept: application/json" },
     })
       .then((x) => x.json())
-      .then((data) => setBlockData(data));
+      .then((data) => {
+        console.log("DATA ON 6 JANUARY: ", data);
+        setBlockData(data);
+      });
   };
 
   useEffect(() => {
@@ -139,7 +141,7 @@ function App() {
               sx={{ fontStyle: "italic" }}
               onClick={getNewData}
             >
-              Check it out now
+              GO
             </Button>
           </Box>
           {!display && (
@@ -149,7 +151,7 @@ function App() {
           )}
         </Container>
 
-        {blockData && size.width > 800 && (
+        {blockData && (
           <DataTable
             blockData={blockData}
             seconds={seconds}
@@ -157,17 +159,7 @@ function App() {
             setDisplay={setDisplay}
           />
         )}
-        {/* MOBILE VIEW  */}
-        {blockData && size.width <= 800 && (
-          <MobileTable
-            blockData={blockData}
-            seconds={seconds}
-            setMessage={setMessage}
-            setDisplay={setDisplay}
-          />
-        )}
       </Box>
-
       <Footer />
     </div>
   );
