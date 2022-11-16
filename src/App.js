@@ -154,7 +154,7 @@ function App() {
             </Button>
           </Box>
           {/* {display && ( */}
-          <Typography color="white" mt={2} mr={9}>
+          <Typography color="white" mt={2} sx={{ mr: { xs: 0, sm: 9 } }}>
             Enter time in your local timezone
           </Typography>
           {/* )} */}

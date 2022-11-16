@@ -78,7 +78,7 @@ const DataTable = ({
             {block.height}
           </Typography>
           {!showComponent && (
-            <Typography mt={3} variant="h6">
+            <Typography mt={3} variant="h6" px={2}>
               Chancellor on Brink of Second Bailout for Banks{" "}
             </Typography>
           )}
