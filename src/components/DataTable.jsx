@@ -32,9 +32,21 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const DataTable = ({ blockData, seconds, setMessage, setDisplay }) => {
+const style = {
+  display: "flex",
+  flexDirection: "column",
+};
+
+const DataTable = ({
+  blockData,
+  seconds,
+  setMessage,
+  setDisplay,
+  setBlockData,
+}) => {
   const [block, setBlock] = useState();
   const [formatedTime, setFormatedTime] = useState();
+  const [showComponent, setShowComponent] = useState(true);
 
   useEffect(() => {
     if (blockData.length > 0 && blockData !== undefined) {
@@ -51,6 +63,10 @@ const DataTable = ({ blockData, seconds, setMessage, setDisplay }) => {
       d.setUTCSeconds(utcSeconds);
       const formated = format(d, "PPpp");
       setFormatedTime(formated);
+      setShowComponent(true);
+    } else {
+      setBlock({ height: 0 });
+      setShowComponent(false);
     }
   }, [seconds, blockData]);
 
@@ -58,51 +74,60 @@ const DataTable = ({ blockData, seconds, setMessage, setDisplay }) => {
     <Container>
       {block && (
         <Box>
-          <Typography variant="h2">{block.height}</Typography>
-          <Box
-            lineHeight={1}
-            display="flex"
-            justifyContent="center"
-            sx={{ flexWrap: { xs: "wrap" } }}
-            gap={2}
-          >
-            <Typography> Don't Trust, Verify -</Typography>
-            <Link
-              href={`http://blockstream.info/block/${block.hash}`}
-              underline="none"
-              target="_blank"
-              sx={{ cursor: "pointer" }}
-            >
-              Blockstream
-            </Link>
-            <Link
-              href={`https://www.blockchain.com/explorer/blocks/btc/${block.hash}`}
-              underline="none"
-              target="_blank"
-              sx={{ cursor: "pointer" }}
-            >
-              Blockchain
-            </Link>
-            <Link
-              href={`https://btcscan.org/block/${block.hash}`}
-              underline="none"
-              target="_blank"
-              sx={{ cursor: "pointer" }}
-            >
-              Btcscan
-            </Link>
-          </Box>
-          <Typography sx={{ wordWrap: "break-word" }} mt={3}>
-            Hash: {block.hash}
+          <Typography variant="h2" mt={2}>
+            {block.height}
           </Typography>
-          <Typography>Date: {formatedTime}</Typography>
-        </Box>
-      )}
+          {showComponent && (
+            <Box sx={style}>
+              <Box
+                lineHeight={1}
+                display="flex"
+                justifyContent="center"
+                // gap={2}
+                sx={{
+                  flexDirection: { xs: "column", sm: "row" },
+                  flexWrap: { xs: "wrap" },
+                }}
+                gap={2}
+                pt={2}
+              >
+                <Typography> Don't Trust, Verify -</Typography>
+                <Box display="flex" gap={2} justifyContent="center">
+                  <Link
+                    href={`http://blockstream.info/block/${block.hash}`}
+                    underline="none"
+                    target="_blank"
+                    sx={{ cursor: "pointer" }}
+                  >
+                    Blockstream
+                  </Link>
+                  <Link
+                    href={`https://www.blockchain.com/explorer/blocks/btc/${block.hash}`}
+                    underline="none"
+                    target="_blank"
+                    sx={{ cursor: "pointer" }}
+                  >
+                    Blockchain
+                  </Link>
+                  <Link
+                    href={`https://btcscan.org/block/${block.hash}`}
+                    underline="none"
+                    target="_blank"
+                    sx={{ cursor: "pointer" }}
+                  >
+                    Btcscan
+                  </Link>
+                </Box>
+              </Box>
 
-      {blockData.length < 1 && (
-        <Typography mt={2} variant="h6">
-          No block found
-        </Typography>
+              <Typography sx={{ wordWrap: "break-word" }} mt={3}>
+                Hash: {block.hash}
+              </Typography>
+
+              <Typography>Date: {formatedTime}</Typography>
+            </Box>
+          )}
+        </Box>
       )}
     </Container>
   );

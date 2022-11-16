@@ -70,16 +70,24 @@ function App() {
 
   return (
     <div className="App">
-      <Box sx={{ flexGrow: 1 }} bgcolor="#ff9416" height="50px"></Box>
+      <Box
+        // position="fixed"
+        bgcolor="#ff9416"
+        width="100%"
+        height="50px"
+      ></Box>
 
       <Box
+        // mt={20}
+        // pt={15}
         bgcolor="#ff9416"
-        minHeight="100%"
+        minHeight="93%"
         display="flex"
         flexDirection="column"
       >
         <Paper
-          flexGrow={1}
+          // sx={{ flexGrow: 1 }}
+          // flexGrow={1}
           style={styles.paperContainer}
           sx={{ height: { xs: 170, sm: 280 } }}
         >
@@ -106,6 +114,7 @@ function App() {
             color="white"
             sx={{ fontSize: { sm: 24, xs: 16 } }}
             mt={2}
+            px={2}
           >
             Enter a date + time to know the Bitcoin blockheight at that moment
           </Typography>
@@ -156,11 +165,13 @@ function App() {
             seconds={seconds}
             setMessage={setMessage}
             setDisplay={setDisplay}
+            setBlockData={setBlockData}
           />
         )}
         <Link
           mt="auto"
           mr={2}
+          pt={2}
           alignSelf="flex-end"
           href="https://twitter.com/metranite"
           sx={{ color: "black", cursor: "pointer" }}
@@ -173,8 +184,10 @@ function App() {
           </IconButton>
           @metranite
         </Link>
+        <Box bgcolor="white">
+          <Footer />
+        </Box>
       </Box>
-      <Footer />
     </div>
   );
 }

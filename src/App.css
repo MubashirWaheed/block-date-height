@@ -1,9 +1,4 @@
-body,
-#root {
-  /* height: 100vh; */
-}
 .App {
   height: 100vh;
   text-align: center;
-  /* overflow: hidden; */
 }
