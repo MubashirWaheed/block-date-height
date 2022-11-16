@@ -83,7 +83,6 @@ const DataTable = ({
                 lineHeight={1}
                 display="flex"
                 justifyContent="center"
-                // gap={2}
                 sx={{
                   flexDirection: { xs: "column", sm: "row" },
                   flexWrap: { xs: "wrap" },
