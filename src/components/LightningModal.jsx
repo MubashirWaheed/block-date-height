@@ -29,7 +29,7 @@ const LightningModal = ({ openLightningModal, handleLightningModal }) => {
           Lightning
         </Typography>
 
-        <Typography color="white" sx={{ mt: 2, wordWrap: "break-word" }}>
+        <Typography color="white" px={2} sx={{ mt: 2, wordWrap: "break-word" }}>
           LNURL1DP68GURN8GHJ7AMPD3KX2AR0VEEKZAR0WD5XJTNRDAKJ7TNHV4KXCTTTDEHHWM30D3H82UNVWQHKSAT8V43K7MTDVYUNJZJ34YD
         </Typography>
         <Tooltip title="copy lightning address" sx={{ marginLeft: "44%" }}>

@@ -28,7 +28,7 @@ const BitcoinModal = ({ openBitcoinModal, handleBitcoinModal }) => {
           <Typography color="white" fontWeight={600} fontSize={24}>
             Bitcoin
           </Typography>
-          <Typography color="white" sx={{ wordWrap: "break-word" }}>
+          <Typography color="white" px={2} sx={{ wordWrap: "break-word" }}>
             3BHyEzjmrbkvSVpMKSYnLuCQVc8uiGJn3M
           </Typography>
           <Tooltip title="copy bitcoin address">
