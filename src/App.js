@@ -5,15 +5,21 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import DataTable from "./components/DataTable";
-import { Button, IconButton, Link, Paper } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  IconButton,
+  Link,
+  Paper,
+} from "@mui/material";
 import { Box, Container } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import bitcoinImage from "./images/bitcoin.png";
 import Footer from "./components/Footer";
 import useWindowSize from "./hooks/useWindowSize";
-import MobileTable from "./components/MobileTable";
 import Background from "./images/background.png";
 import TwitterSvg from "./images/twitter.svg";
+// import LoadingButton from "@mui"
 
 const disablePast = "Tue 3 Jan 2009 19:26:00 GMT";
 
@@ -38,6 +44,7 @@ function App() {
 
   const [message, setMessage] = useState("Welcome to BlockHeightDate");
   const [display, setDisplay] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (newValue) => {
     let secondsEpoch = Math.round(newValue / 1000);
@@ -46,13 +53,14 @@ function App() {
   };
 
   const getNewData = () => {
+    setLoading(true);
     fetch(`/.netlify/functions/node-fetch?seconds=${seconds}`, {
       headers: { accept: "Accept: application/json" },
     })
       .then((x) => x.json())
       .then((data) => {
-        console.log("DATA ON 6 JANUARY: ", data);
         setBlockData(data);
+        setLoading(false);
       });
   };
 
@@ -63,12 +71,7 @@ function App() {
 
   return (
     <div className="App">
-      <Box
-        // position="fixed"
-        bgcolor="#ff9416"
-        width="100%"
-        height="50px"
-      ></Box>
+      <Box bgcolor="#ff9416" width="100%" height="50px"></Box>
 
       <Box
         bgcolor="#ff9416"
@@ -123,6 +126,7 @@ function App() {
                 onChange={handleChange}
                 minDate={disablePast}
                 disableFuture={true}
+                // onError
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -145,6 +149,12 @@ function App() {
           <Typography color="white" mt={2}>
             Enter time in your local timezone
           </Typography>
+          {!blockData && loading && (
+            <Box mt={5}>
+              <CircularProgress />
+            </Box>
+          )}
+
           {!display && (
             <Typography color="white" mt={2} fontSize={25}>
               was
