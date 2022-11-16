@@ -153,6 +153,11 @@ function App() {
               GO
             </Button>
           </Box>
+          {/* {display && ( */}
+          <Typography color="white" mt={2} mr={9}>
+            Enter time in your local timezone
+          </Typography>
+          {/* )} */}
           {!display && (
             <Typography color="white" mt={2} fontSize={25}>
               was
