@@ -81,13 +81,14 @@ function App() {
         // mt={20}
         // pt={15}
         bgcolor="#ff9416"
-        minHeight="93%"
+        // minHeight="0"
+        minHeight="92%"
         display="flex"
         flexDirection="column"
       >
+        {/* <Box flexGrow={1}> */}
         <Paper
           // sx={{ flexGrow: 1 }}
-          // flexGrow={1}
           style={styles.paperContainer}
           sx={{ height: { xs: 170, sm: 280 } }}
         >
@@ -184,6 +185,7 @@ function App() {
           </IconButton>
           @metranite
         </Link>
+        {/* </Box> */}
         <Box bgcolor="white">
           <Footer />
         </Box>
