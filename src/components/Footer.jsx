@@ -13,7 +13,6 @@ const Footer = () => {
   const handleLightningModal = () => setOpenLightningModal((value) => !value);
   return (
     <Box
-      // bgcolor="blue"
       // height="50px"
       bgcolor="white"
       mb={0}

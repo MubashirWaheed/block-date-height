@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
-import { IconButton, Tooltip, Typography } from "@mui/material";
+import { IconButton, Snackbar, Tooltip, Typography } from "@mui/material";
 import simpleBtcQR from "../images/simpleBtcQR.png";
 import CopyIcon from "../images/copy.svg";
 
@@ -21,6 +21,13 @@ const style = {
 };
 
 const BitcoinModal = ({ openBitcoinModal, handleBitcoinModal }) => {
+  const [showAlert, setShowAlert] = useState(false);
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setShowAlert(false);
+  };
   return (
     <div>
       <Modal open={openBitcoinModal} onClose={handleBitcoinModal}>
@@ -33,11 +40,12 @@ const BitcoinModal = ({ openBitcoinModal, handleBitcoinModal }) => {
           </Typography>
           <Tooltip title="copy bitcoin address">
             <IconButton
-              onClick={() =>
+              onClick={() => {
                 navigator.clipboard.writeText(
                   "3BHyEzjmrbkvSVpMKSYnLuCQVc8uiGJn3M"
-                )
-              }
+                );
+                setShowAlert(true);
+              }}
             >
               <img src={CopyIcon} alt="copy bitcoin address" />
             </IconButton>
@@ -56,6 +64,12 @@ const BitcoinModal = ({ openBitcoinModal, handleBitcoinModal }) => {
           />
         </Box>
       </Modal>
+      <Snackbar
+        open={showAlert}
+        autoHideDuration={2000}
+        onClose={handleClose}
+        message="Address copied"
+      />
     </div>
   );
 };
