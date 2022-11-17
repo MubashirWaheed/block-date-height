@@ -54,6 +54,7 @@ function App() {
 
   const getNewData = () => {
     setLoading(true);
+    setBlockData();
     fetch(`/.netlify/functions/node-fetch?seconds=${seconds}`, {
       headers: { accept: "Accept: application/json" },
     })
@@ -129,6 +130,9 @@ function App() {
                 // onError
                 renderInput={(params) => (
                   <TextField
+                    onKeyDown={(e) => {
+                      e.preventDefault();
+                    }}
                     {...params}
                     sx={{
                       backgroundColor: "white",
