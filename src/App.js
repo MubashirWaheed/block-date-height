@@ -175,23 +175,8 @@ function App() {
             setBlockData={setBlockData}
           />
         )}
-        <Link
-          mt="auto"
-          mr={2}
-          pt={2}
-          alignSelf="flex-end"
-          href="https://twitter.com/metranite"
-          sx={{ color: "black", cursor: "pointer" }}
-          underline="none"
-          target="_blank"
-          rel="noopener"
-        >
-          <IconButton sx={{ p: "0" }}>
-            <img src={TwitterSvg} alt="twitter icon" />
-          </IconButton>
-          @metranite
-        </Link>
-        <Box bgcolor="white">
+
+        <Box bgcolor="white" mt="auto">
           <Footer />
         </Box>
       </Box>
